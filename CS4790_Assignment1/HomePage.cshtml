@@ -1,0 +1,44 @@
+﻿@{ Layout = "~/Shared/_Layout.cshtml"; }
+       @{
+           if(IsPost)
+           {
+               var SandSize = Request["SandSize"];
+               if (SandSize == "Mini")
+               {
+                   App.Size = "Mini Donculous"; 
+                   App.MeatAmount = "3 Ounces";
+                   App.Cheese = "1 slice";
+                   App.Price = "$4.50";
+               }
+               else if (SandSize == "Donculous")
+               {
+                   App.Size = "Donculous";
+                   App.MeatAmount = "5 Ounces";
+                   App.Cheese = "2 slices";
+                   App.Price = "$6.75";
+               }
+               else if (SandSize == "Double")
+               {
+                   App.Size = "Double Donculous";
+                   App.MeatAmount = "10 Ounces";
+                   App.Cheese = "4 slices";
+                   App.Price = "$10.50";
+               }
+
+           }
+       }
+<script>
+
+    
+</script>
+
+        <form method="post">
+            <fieldset>
+                <p><b>Select a cheesesteak size:</b></p>
+                Mini Donculous(4 inches)<input type="radio" name="SandSize" value="Mini"/> <br/>
+                Donculous(6 inches)<input type="radio" name="SandSize" value="Donculous"/><br/>
+                Double Donculous(12 inches)<input type="radio" name="SandSize" value="Double"/><br />
+                <input type="submit" /> 
+            </fieldset>
+        </form>
+ 
