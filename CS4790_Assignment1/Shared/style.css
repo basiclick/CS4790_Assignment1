@@ -4,7 +4,7 @@
 .content{background-color:#00cc99;
     color:#00674d;
     font-family:DokChampa;
-    font-size: 160%;
+    font-size: 170%;
 	background-image: radial-gradient(#fff 10%, transparent 10%),
 	radial-gradient(#fff 10%, transparent 10%);
 	background-size: 38px 38px;
@@ -19,7 +19,7 @@ aside{background-color: #00BBCC; width: 23%; float: right;
 	background-size: 40px 40px;
 	background-position: 0 0, 22px 22px;
     font-family:FangSong;
-    font-size:x-large
+    font-size:180%
 }
 header{background-color: #00CCBB; 
         height: 140px;

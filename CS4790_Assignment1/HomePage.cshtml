@@ -1,7 +1,9 @@
-﻿@{ Layout = "~/Shared/_Layout.cshtml"; }
+﻿@{ Layout = "~/Shared/_Layout.cshtml";
+    var askUser = "Select a cheesesteak size and click submit"; }
        @{
            if(IsPost)
            {
+               askUser = "Now click on a deluxe cheesesteak";
                var SandSize = Request["SandSize"];
                if (SandSize == "Mini")
                {
@@ -34,7 +36,7 @@
 
         <form method="post">
             <fieldset>
-                <p><b>Select a cheesesteak size:</b></p>
+                <p><b>@askUser:</b></p>
                 Mini Donculous(4 inches)<input type="radio" name="SandSize" value="Mini"/> <br/>
                 Donculous(6 inches)<input type="radio" name="SandSize" value="Donculous"/><br/>
                 Double Donculous(12 inches)<input type="radio" name="SandSize" value="Double"/><br />
