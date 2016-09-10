@@ -5,9 +5,13 @@
            {
                askUser = "Now click on a deluxe cheesesteak";
                var SandSize = Request["SandSize"];
+               var sandNum = Request["SandNum"];
+               var numLoops = 0;
+               Int32.TryParse(sandNum, out numLoops);
+               App.RowNum = numLoops;
                if (SandSize == "Mini")
                {
-                   App.Size = "Mini Donculous"; 
+                   App.Size = "Mini Donculous";
                    App.MeatAmount = "3 Ounces";
                    App.Cheese = "1 slice";
                    App.Price = "$4.50";
@@ -29,17 +33,15 @@
 
            }
        }
-<script>
 
-    
-</script>
 
         <form method="post">
             <fieldset>
                 <p><b>@askUser:</b></p>
                 Mini Donculous(4 inches)<input type="radio" name="SandSize" value="Mini"/> <br/>
                 Donculous(6 inches)<input type="radio" name="SandSize" value="Donculous"/><br/>
-                Double Donculous(12 inches)<input type="radio" name="SandSize" value="Double"/><br />
+                Double Donculous(12 inches)<input type="radio" name="SandSize" value="Double"/><br/>
+                How Many cheesesteaks?<input type="text" name="SandNum" /><br/>
                 <input type="submit" /> 
             </fieldset>
         </form>
