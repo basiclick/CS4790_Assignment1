@@ -1,7 +1,9 @@
-﻿@{ Layout = "~/Shared/_Layout.cshtml"; }
+﻿@{ Layout = "~/Shared/_Layout.cshtml";
+
+ }
 
 <h1>Devil's Spit Donculous:</h1>
-<p>A fiery cheesesteak with grilled fresh jalepenos and a tiny dab of our secret Donculous Sauce and also deep friend jalepeno poppers. All smothered in a spicy nacho cheese.</p>
+<p>A fiery cheesesteak with grilled fresh jalepenos and a tiny dab of our secret Donculous Sauce. It also has several deep fried jalepeno poppers on it(awesome). The whole thing is smothered in a spicy nacho cheese.</p>
 
 <table border="2">
     <tr>
@@ -10,10 +12,19 @@
         <td>Amount of Cheese</td>
         <td>Price</td>
     </tr>
-    <tr>
-        <td>@App.Size</td>
-        <td>@App.MeatAmount</td>
-        <td>@App.Cheese</td>
-        <td>@App.Price</td>
-    </tr>
+    @{ for (int i = 0; i < App.RowNum; i++)
+        {
+            <tr>
+                <td>@App.Size</td>
+                <td>@App.MeatAmount</td>
+                <td>@App.Cheese</td>
+                <td>$@App.Price</td>
+            </tr>
+        }
+        <tr>
+            <td colspan="2">@App.SideChoice</td>
+            <td colspan="2">@App.SidePrice</td>
+
+        </tr>
+    }  
 </table>

@@ -10,10 +10,19 @@
         <td>Amount of Cheese</td>
         <td>Price</td>
     </tr>
-    <tr>
-        <td>@App.Size</td>
-        <td>@App.MeatAmount</td>
-        <td>@App.Cheese</td>
-        <td>@App.Price</td>
-    </tr>
+    @{ for (int i = 0; i < App.RowNum; i++)
+        {
+            <tr>
+                <td>@App.Size</td>
+                <td>@App.MeatAmount</td>
+                <td>@App.Cheese</td>
+                <td>$@App.Price</td>
+            </tr>
+        }
+        <tr>
+            <td colspan="2">@App.SideChoice</td>
+            <td colspan="2">@App.SidePrice</td>
+
+        </tr>
+    }  
 </table>
