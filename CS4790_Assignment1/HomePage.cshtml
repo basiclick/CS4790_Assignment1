@@ -2,143 +2,186 @@
     var askUser = "Select a cheesesteak size and a side option and click submit:";
 
 
-    var step0Form = @" Mini Donculous(4 inches)<input type=""radio"" name=""SandSize"" value=""Mini""/> <br/>
-                Donculous(6 inches)<input type=""radio"" name=""SandSize"" value=""Donculous""/><br/>
-                      Double Donculous(12 inches)<input type=""radio"" name=""SandSize"" value=""Double"" /><br />
-    How Many cheesesteaks ?<input type=""text"" name=""SandNum"" /><br />
-     ";
+    var step0Form = @" <div class=""custom-controls-stacked"">
+<label class=""custom-control custom-radio"">
+<input id=""radioStacked1"" type=""radio"" name=""SandSize"" class=""custom-control-input"" value=""Mini""/> 
+<span class=""custom-control-indicator""></span>
+<span class=""custom-control-description"">Mini Donculous(4 inches)</span>
+</label></br>
+<label class=""custom-control custom-radio"">
+               <input id=""radioStacked2"" class=""custom-control-input"" type=""radio"" name=""SandSize"" value=""Donculous""/>
+<span class=""custom-control-indicator""></span>
+<span class=""custom-control-description""> Donculous(6 inches)</span>
+</label></br>
+<label class=""custom-control custom-radio"">
+<input type=""radio"" id=""radioStacked3"" class=""custom-control-input"" name=""SandSize"" value=""Double"" />
+<span class=""custom-control-indicator""></span>
+<span class=""custom-control-description""> Double Donculous(12 inches)</span>
+</label>
+</div>
+How Many cheesesteaks ?<input type=""text"" name=""SandNum"" />";
 
-    var stepSideForm = @"Select a side choice <select name=""Side"">
-                <option value=""Fries"" name=""Side"">Fries($2.00)</option>
-                <option value=""ChiliCheeseFries"" name=""Side""> Chili Cheese Fries($3.00)</option >
-                       <option value=""Poppers"" name=""Side""> Jalepeno Poppers($3.00) </option >
-                              <option value=""ChiliPoppers"" name=""Side""> Chili Cheese Jalepeno Poppers($4.00) </ option >
-                                     <option value=""Gyoza"" name=""Side""> Gyoza($2.50) </ option >
-                                        <option value=""HotWings"" name=""Side""> Hot Wings($2.75) </ option >
-                                              <option value=""Salad"" name=""Side""> Side Salad with ranch($2.25) </ option >
-                                                     <option value=""None"" name=""Side""> No side </ option >
-                                                            </select> <br/> 
-                                                               <input type=""submit"" />";
+    var stepSideForm = @"<label for=""garnish""> Select a side choice</label>
+        <select name=""Side"" id=""garnish"" class=""form-control"">
+            <option value=""Fries""name=""Side"">Fries($2.00)</option>
+            <option value=""ChiliCheeseFries"" name=""Side""> Chili Cheese Fries($3.00)</option>
+            <option value=""Poppers"" name=""Side""> Jalepeno Poppers($3.00) </option>
+            <option value=""ChiliPoppers"" name=""Side""> Chili Cheese Jalepeno Poppers($4.00) </ option >
+            <option value=""Gyoza"" name=""Side""> Gyoza($2.50) </ option >
+            <option value=""HotWings"" name=""Side""> Hot Wings($2.75) </ option >
+            <option value=""Salad"" name=""Side""> Side Salad with ranch($2.25) </ option >
+            <option value=""None"" name=""Side""> No side </ option >
+        </select> 
+        <input class="" btn btn-danger btn-block form-control"" type=""submit"" value=""submit"" />";
 
     var currentStep = step0Form;
     var otherCurrentStep = stepSideForm;
 
     Validation.Add("SandNum", Validator.Required("You must enter a number of cheesesteaks."), Validator.Integer("Number of cheesesteaks must be a number."));
 }
-       @{
-           if (IsPost)
-           {
+@{
+    if (IsPost)
+    {
 
-               askUser = "Now click on a deluxe cheesesteak:";
-               currentStep = "";
-               otherCurrentStep = "";
+        askUser = "Now click on a deluxe cheesesteak:";
+        currentStep = "";
+        otherCurrentStep = "";
 
-               var SandSize = Request["SandSize"];
-               var sandNum = Request["SandNum"];
-               var numLoops = 0;
-               var sideDish = Request["Side"];
+        var SandSize = Request["SandSize"];
+        var sandNum = Request["SandNum"];
+        var numLoops = 0;
+        var sideDish = Request["Side"];
 
-               if (Validation.IsValid())
-               {
+        if (Validation.IsValid())
+        {
 
-                   switch (sideDish)
-                   {
-                       case "Fries":
-                           App.SideChoice = "Fries";
-                           App.SidePrice = "$2.00";
+            switch (sideDish)
+            {
+                case "Fries":
+                    App.SideChoice = "Fries";
+                    App.SidePrice = "$2.00";
 
-                           break;
+                    break;
 
-                       case "ChiliCheeseFries":
-                           App.SideChoice = "Chili Cheese Fries";
-                           App.SidePrice = "$3.00";
+                case "ChiliCheeseFries":
+                    App.SideChoice = "Chili Cheese Fries";
+                    App.SidePrice = "$3.00";
 
-                           break;
+                    break;
 
-                       case "Poppers":
-                           App.SideChoice = "Jalepeno Poppers";
-                           App.SidePrice = "$3.00";
+                case "Poppers":
+                    App.SideChoice = "Jalepeno Poppers";
+                    App.SidePrice = "$3.00";
 
-                           break;
+                    break;
 
-                       case "ChiliPoppers":
-                           App.SideChoice = "Chili CheeseJalepeno Poppers";
-                           App.SidePrice = "$4.00";
+                case "ChiliPoppers":
+                    App.SideChoice = "Chili CheeseJalepeno Poppers";
+                    App.SidePrice = "$4.00";
 
-                           break;
+                    break;
 
-                       case "Gyoza":
-                           App.SideChoice = "Gyoza";
-                           App.SidePrice = "$2.50";
+                case "Gyoza":
+                    App.SideChoice = "Gyoza";
+                    App.SidePrice = "$2.50";
 
-                           break;
+                    break;
 
-                       case "HotWings":
-                           App.SideChoice = "Hot Wings";
-                           App.SidePrice = "$2.75";
+                case "HotWings":
+                    App.SideChoice = "Hot Wings";
+                    App.SidePrice = "$2.75";
 
-                           break;
+                    break;
 
-                       case "Salad":
-                           App.SideChoice = "Side Salad with Ranch";
-                           App.SidePrice = "$2.25";
+                case "Salad":
+                    App.SideChoice = "Side Salad with Ranch";
+                    App.SidePrice = "$2.25";
 
-                           break;
+                    break;
 
-                       case "None":
-                           App.SideChoice = "No side dish cheesesteak only";
-                           App.SidePrice = "Free";
+                case "None":
+                    App.SideChoice = "No side dish cheesesteak only";
+                    App.SidePrice = "Free";
 
-                           break;
-                   }
+                    break;
+            }
 
-                   Int32.TryParse(sandNum, out numLoops);
-                   App.RowNum = numLoops;
-                   if (SandSize == "Mini")
-                   {
-                       App.Size = "Mini Donculous";
-                       App.MeatAmount = "3 Ounces";
-                       App.Cheese = "1 slice";
-                       App.Price = "4.50";
+            Int32.TryParse(sandNum, out numLoops);
+            App.RowNum = numLoops;
+            if (SandSize == "Mini")
+            {
+                App.Size = "Mini Donculous";
+                App.MeatAmount = "3 Ounces";
+                App.Cheese = "1 slice";
+                App.Price = "4.50";
 
-                   }
-                   else if (SandSize == "Donculous")
-                   {
-                       App.Size = "Donculous";
-                       App.MeatAmount = "5 Ounces";
-                       App.Cheese = "2 slices";
-                       App.Price = "6.75";
-                   }
-                   else if (SandSize == "Double")
-                   {
-                       App.Size = "Double Donculous";
-                       App.MeatAmount = "10 Ounces";
-                       App.Cheese = "4 slices";
-                       App.Price = "10.50";
-                   }
-
-
-               }
-               else
-               {
-                   Validation.AddFormError("Sorry your form was not valid. Please click on the Homepage link on the right sidebar and try again.");
-                   askUser = "";
-               }
-           }
-           }
+            }
+            else if (SandSize == "Donculous")
+            {
+                App.Size = "Donculous";
+                App.MeatAmount = "5 Ounces";
+                App.Cheese = "2 slices";
+                App.Price = "6.75";
+            }
+            else if (SandSize == "Double")
+            {
+                App.Size = "Double Donculous";
+                App.MeatAmount = "10 Ounces";
+                App.Cheese = "4 slices";
+                App.Price = "10.50";
+            }
 
 
-        <form method="post">
-            <fieldset>
-                @Html.ValidationSummary(true)
-                <p><b>@askUser</b></p>
+        }
+        else
+        {
+            Validation.AddFormError("Sorry your form was not valid. Please click on the Homepage link on the right sidebar and try again.");
+            askUser = "";
+        }
+    }
+}
+
+
+<div class="container">
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2 class="center-block">Deluxe Cheesesteaks</h2>
+                </div>
+                <div class="panel-body">
+                    <nav class="navbar navbar-default navbar-nav">
+                        <ul class="nav nav-tabs navbar-nav">
+                            <li> <a class="navbar-btn" href="@Href("~/HomePage.cshtml")"> HomePage</a></li>
+                            <li><a class="navbar-btn" href="@Href("~/BleuDonculous.cshtml")"> Bleu Donculous</a></li>
+                            <li><a class="navbar-btn" href="@Href("~/PepperDonculous.cshtml")"> Pepper Donculous</a></li>
+                            <li><a class="navbar-btn" href="@Href("~/DevilsSpitDonculous.cshtml")"> Devil's Spit Donculous</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="row">
+        <form method="post" class="form-group">
+            <fieldset class="form-group">
+                <div class="col-sm-6">
+
+                    @Html.ValidationSummary(true)
+                    <p><b>@askUser</b></p>
 
 
                     @Html.Raw(currentStep)
+                   
+
+                </div>
+                <div class="col-sm-5">
+                    @Html.Raw(otherCurrentStep)
                     @Html.ValidationMessage("SandNum")
-</fieldset>
-            <fieldset>
-                @Html.Raw(otherCurrentStep)
+                </div>
             </fieldset>
         </form>
- 
+    </div>
+
+</div>

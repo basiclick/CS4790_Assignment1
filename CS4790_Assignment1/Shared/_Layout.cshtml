@@ -3,9 +3,20 @@
     <head>
         <title>@Page.Title</title>
         <meta name="description" content="@Page.mDescription" />
-        <link rel="stylesheet" href="@Href("~/Shared/style.css")" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="@Href("~/Shared/style1.css")" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" /> />
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div class="wrapper">  <header>@RenderPage("~/Shared/_Header.cshtml")</header><aside>@RenderPage("~/Shared/_Sidebar.cshtml") </aside> <div class="content"> @RenderBody() </div></div>
+        <script src="~/scripts/ai.0.22.9-build00167.min.js"></script>
+        <script src="~/scripts/bootstrap.min.js"></script>
+        <script src="~/scripts/jquery-1.9.1.min.js"></script>
+        <div class="wrapper"> 
+        <header>@RenderPage("~/Shared/_Header.cshtml")</header>
+        <div class="content">
+             @RenderBody()
+             </div>
+        </div>
     </body>
 </html>
